@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getCategories, getProducts } from "../api/services";
+import { getCategories, getProductsByCategory } from "../api/services";
 import { useNavigate } from "react-router-dom";
 import { product } from "../type";
 import Pagination from "./Pagination";
@@ -10,36 +10,35 @@ const ListProducts = () => {
 
   const [products, setProducts] = useState<product[]>([]);
   const [categories, setCategories] = useState<string[]>([]);
-  const limit = useItemsPerPage((state: unknown) => state as number).limit;
-  // const [limit, setLimit] = useState(10);
-  const [sort, setSort] = useState("electronics");
+  const limit = useItemsPerPage((state) => state.limit as number);
+  const [category, setCategory] = useState("electronics");
 
   const fetchCategories = async () => {
     const res = await getCategories();
     setCategories(res);
-    console.log(res);
   }
 
-  const fetchProducts = async () => {
-    console.log(limit);
-    const res = await getProducts(limit, sort);
-    setProducts(res);
+  const fetchProductByCategories = async (input: string | null) => {
+    const res = await getProductsByCategory(input || category);
     console.log(res);
+    setProducts(res);
   }
 
   useEffect(() => {
-    console.log(limit);
     fetchCategories();
-    fetchProducts();
+  }, []);
+
+  useEffect(() => {
+    fetchProductByCategories(null);
   }, [limit]);
 
-  const handleSort = (input: string) => {
-    setSort(input);
-    fetchProducts();
+  const handleCategory = (input: string) => {
+    setCategory(input);
+    fetchProductByCategories(input);
   }
 
   return (
-    <div className="">
+    <div>
       <div className="flex">
         <div className="w-1/5 flex">
           <div className="w-fit h-fit mx-auto border border-gray-200 rounded bg-white shadow-md">
@@ -54,8 +53,8 @@ const ListProducts = () => {
               {categories.map((item, index) => (
                 <div
                   key={index}
-                  className={`py-2.5 rounded-e-full me-8 duration-200 ease-in-out cursor-pointer ${sort === item ? 'bg-blue-500 text-white' : 'hover:bg-gray-200 hover:bg-opacity-60'}`}
-                  onClick={() => handleSort(item)}>
+                  className={`py-2.5 rounded-e-full me-8 duration-200 ease-in-out cursor-pointer ${category === item ? 'bg-blue-500 text-white' : 'hover:bg-gray-200 hover:bg-opacity-60'}`}
+                  onClick={() => handleCategory(item)}>
                   <span className="px-5">
                     {item}
                   </span>
