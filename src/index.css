@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+#root {
+  margin: 0;
+  min-height: 100vh;
+  min-width: 100vw;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+* {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.primary {
+  background-color: #3c4252;
+}
+
+.primary-dark {
+  background-color: #1a1c23;
+}
