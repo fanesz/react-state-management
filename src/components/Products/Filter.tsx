@@ -1,5 +1,5 @@
-import { useFilterData } from "../../store";
 import { ChangeEvent } from "react";
+import { useFilterData } from "../../store/filter";
 
 interface props {
   currentPage: number;

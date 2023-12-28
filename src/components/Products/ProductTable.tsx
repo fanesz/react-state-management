@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import { product } from "../../type";
+import { ProductsState } from "../../store/products";
 
-const ProductTable = (props: { products: product[] }) => {
+const ProductTable = (props: { products: ProductsState }) => {
   const navigate = useNavigate();
 
   const tableTitleStyle = "p-3 rounded-t-md border-b border-gray-300 bg-white";
@@ -22,7 +22,7 @@ const ProductTable = (props: { products: product[] }) => {
             </tr>
           </thead>
           <tbody>
-            {props.products.map((item, index) => (
+            {props.products.payload.map((item, index) => (
               <tr
                 className={`hover:bg-gray-300 hover:bg-opacity-70 duration-150 cursor-pointer ${
                   index % 2 === 0 ? "bg-gray-100" : "bg-white"

@@ -9,8 +9,12 @@ export const login = async (username: string, password: string) => {
 };
 
 export const getCategories = async () => {
-  const response = await api.get("/products/categories");
-  return response.data;
+  try {
+    const response = await api.get("/products/categories");
+    return response.data;
+  } catch (err) {
+    return false;
+  }
 };
 
 export const getProductsByCategory = async (
@@ -18,7 +22,8 @@ export const getProductsByCategory = async (
   sort: string,
   limit: number,
 ) => {
-  const path = category === "all" ? "/products" : `/products/category/${category}`;
+  const path =
+    category === "all" ? "/products" : `/products/category/${category}`;
   const response = await api.get(`${path}?sort=${sort}&limit=${limit}`);
   return response.data;
 };
