@@ -18,9 +18,8 @@ export const getProductsByCategory = async (
   sort: string,
   limit: number,
 ) => {
-  const response = await api.get(
-    `/products/category/${category}?sort=${sort}&limit=${limit}`,
-  );
+  const path = category === "all" ? "/products" : `/products/category/${category}`;
+  const response = await api.get(`${path}?sort=${sort}&limit=${limit}`);
   return response.data;
 };
 

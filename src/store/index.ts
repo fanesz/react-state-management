@@ -12,7 +12,7 @@ type FilterData = {
 export const useFilterData = create<FilterData>((set) => ({
   limit: 5,
   sort: "asc",
-  category: "electronics",
+  category: "all",
   setLimit: (limit: number) => set({ limit }),
   setSort: (sort: string) => set({ sort }),
   setCategory: (category: string) => set({ category }),
