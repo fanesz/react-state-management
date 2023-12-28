@@ -1,11 +1,13 @@
 export interface CategoriesState {
   loading: boolean;
+  selectedCategory: string;
   payload: string[];
   error: boolean;
 }
 
 export const CATEGORIES_INITIAL: CategoriesState = {
   loading: false,
+  selectedCategory: "all",
   payload: ["all"],
   error: false,
 };
@@ -15,8 +17,9 @@ interface Action {
   payload?: CategoriesState["payload"];
 }
 
-export const CategoryReducer = (state: CategoriesState, action: Action) => {
+const CategoryReducer = (state: CategoriesState, action: Action) => {
   const { type, payload } = action;
+
   switch (type) {
     case "FETCH_START":
       return {
@@ -35,7 +38,13 @@ export const CategoryReducer = (state: CategoriesState, action: Action) => {
         loading: false,
         error: true,
       };
+    case "SET_CATEGORY":
+      return {
+        ...state,
+        selectedCategory: payload ?? "all",
+      };
     default:
-      return state;
+      throw new Error(`Unhandled action type: ${type}`);
   }
 };
+export default CategoryReducer;
