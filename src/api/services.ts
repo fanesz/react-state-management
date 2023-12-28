@@ -13,13 +13,14 @@ export const getCategories = async () => {
   return response.data;
 };
 
-export const getProducts = async (limit: number, sort: string) => {
-  const response = await api.get(`/products?limit=${limit}&sort=${sort}`);
-  return response.data;
-};
-
-export const getProductsByCategory = async (category: string) => {
-  const response = await api.get(`/products/category/${category}`);
+export const getProductsByCategory = async (
+  category: string,
+  sort: string,
+  limit: number,
+) => {
+  const response = await api.get(
+    `/products/category/${category}?sort=${sort}&limit=${limit}`,
+  );
   return response.data;
 };
 
