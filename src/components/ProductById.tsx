@@ -1,6 +1,6 @@
-import { useParams } from "react-router-dom"
-import { getProductById } from "../api/services"
-import { useEffect, useState } from "react"
+import { useParams } from "react-router-dom";
+import { getProductById } from "../api/services";
+import { useEffect, useState } from "react";
 import { product } from "../type";
 
 const ProductById = () => {
@@ -12,11 +12,11 @@ const ProductById = () => {
     const res = await getProductById(id);
     console.log(res);
     setProduct(res);
-  }
+  };
 
   useEffect(() => {
     fetchData();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -30,7 +30,7 @@ const ProductById = () => {
         <div>{product?.rating?.count}</div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ProductById
+export default ProductById;

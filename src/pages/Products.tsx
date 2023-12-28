@@ -1,12 +1,11 @@
 import { useParams } from "react-router-dom";
-import ListProducts from "../components/ListProducts"
+import ListProducts from "../components/ListProducts";
 import ProductById from "../components/ProductById";
 import { useState } from "react";
 import { PlusIcon } from "@heroicons/react/24/solid";
 import { BellAlertIcon } from "@heroicons/react/24/outline";
 
 const Products = () => {
-
   const { id } = useParams();
 
   const [search, setSearch] = useState("");
@@ -22,9 +21,7 @@ const Products = () => {
             U
           </div>
         </div>
-        <div className="my-auto me-10 text-xl">
-          Hi, Fanes!
-        </div>
+        <div className="my-auto me-10 text-xl">Hi, Fanes!</div>
       </div>
       <div className="bg-gradient-to-r from-gray-800 to-gray-600 h-36 flex justify-between">
         <div className="flex gap-5 w-5/6 ms-12">
@@ -50,11 +47,9 @@ const Products = () => {
 
       <div className="flex p-4 bg-gray-100">
         {id ? <ProductById /> : <ListProducts />}
-
       </div>
-
     </div>
-  )
-}
+  );
+};
 
-export default Products
+export default Products;

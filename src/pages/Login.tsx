@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { login } from "../api/services"
+import { login } from "../api/services";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -19,22 +19,15 @@ const Login = () => {
         setError("");
       }, 3000);
     }
-  }
-
+  };
 
   return (
-    <div className="">
-
-      <div className='flex'>
-
-        <div className="bg-gradient-to-r from-gray-800 to-gray-900  h-screen w-4/5">
-
-        </div>
+    <div>
+      <div className="flex">
+        <div className="bg-gradient-to-r from-gray-800 to-gray-900  h-screen w-4/5"></div>
 
         <div className="m-auto h-fit pb-28">
-          <div className="mb-3 font-medium text-xl">
-            LOGIN TO YOUR ACCOUNT
-          </div>
+          <div className="mb-3 font-medium text-xl">LOGIN TO YOUR ACCOUNT</div>
 
           <div>
             <input
@@ -60,18 +53,13 @@ const Login = () => {
             Forgot Password
           </div>
 
-          <div>
-            {error && (
-              <div className="text-red-500 mb-3">
-                {error}
-              </div>
-            )}
-          </div>
+          <div>{error && <div className="text-red-500 mb-3">{error}</div>}</div>
 
           <div>
             <button
               className="primary shadow-sm hover:bg-gray-900 w-full h-9 rounded text-white mb-4"
-              onClick={handleLogin}>
+              onClick={handleLogin}
+            >
               Log In
             </button>
           </div>
@@ -101,9 +89,8 @@ const Login = () => {
           </div>
         </div>
       </div>
-
     </div>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;
