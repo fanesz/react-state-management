@@ -1,22 +1,23 @@
-import { useFilterData } from "../../store";
-import { ChangeEvent } from "react";
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-nocheck
 
-interface props {
-  currentPage: number;
-  sort: string;
-}
-const Pagination = (props: props) => {
-  const { currentPage, sort } = props;
+import { ChangeEvent } from "react";
+import useProducts from "../../store/context/products";
+
+const Pagination = () => {
+  const { pagination, setPagination } = useProducts();
 
   const handleLimitItemPerPage = (e: ChangeEvent<HTMLSelectElement>) => {
-    useFilterData.setState(() => {
-      return { limit: Number(e.target.value) };
+    setPagination({
+      ...pagination,
+      limit: Number(e.target.value),
     });
   };
 
   const handleSorting = (e: ChangeEvent<HTMLSelectElement>) => {
-    useFilterData.setState(() => {
-      return { sort: e.target.value };
+    setPagination({
+      ...pagination,
+      sort: e.target.value,
     });
   };
 
@@ -27,7 +28,7 @@ const Pagination = (props: props) => {
       <div>
         Rows per page:
         <select
-          value={currentPage}
+          value={pagination.limit}
           onChange={handleLimitItemPerPage}
           className="mx-2 border border-gray-300 rounded"
         >
@@ -41,7 +42,7 @@ const Pagination = (props: props) => {
 
       <div className="flex gap-2">
         <select
-          value={sort}
+          value={pagination.sort}
           onChange={handleSorting}
           className="mx-2 border border-gray-300 rounded"
         >
