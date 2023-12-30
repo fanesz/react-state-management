@@ -1,30 +1,6 @@
-# React + TypeScript + Vite
+A simple product displayer app using https://fakestoreapi.com/ free API but focused on state management.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: "latest",
-    sourceType: "module",
-    project: ["./tsconfig.json", "./tsconfig.node.json"],
-    tsconfigRootDir: __dirname,
-  },
-};
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+There is 3 branch in this repo:
+- [normal-state-management](https://github.com/fanesz/react-state-management/tree/normal-state-management) - Feched data management using basic useState, and data filter using zustand.
+- [useReducer-zustand](https://github.com/fanesz/react-state-management/tree/useReducer-zustand) - Fetched data management using useReducer from react, and data filter using zustand.
+- [master](https://github.com/fanesz/react-state-management) - Fetched data and filter state management using useReducer and useContext, then provided with Provider so every data can be access by the child component without passing it by the props.
